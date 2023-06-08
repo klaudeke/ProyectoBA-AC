@@ -1,0 +1,171 @@
+/* Reset de estilos para evitar conflictos */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    color: #333;
+    line-height: 1.5;
+}
+
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    background-color: #fff;
+    padding: 5px;
+    text-align: center;
+}
+
+nav ul {
+    list-style: none;
+    margin-top: 10px;
+    width: 100%;
+}
+
+
+
+nav ul li a {
+    text-decoration: none;
+    color: #333;
+    padding: 5px;
+}
+
+h1 {
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+
+h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+p {
+    margin-bottom: 10px;
+}
+
+section {
+    margin-bottom: 30px;
+}
+
+form label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+form input[type="text"],
+form input[type="email"],
+form textarea {
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+form input[type="submit"] {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+
+
+.navbar{
+    background-color: #333;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    width: 100%;
+   
+}
+
+.logo img {
+    max-width: 70px; /* Ajusta el tamaño del logotipo según tus necesidades */
+    /*margin-right: auto;*/
+}
+
+.nav-links a {
+    color: #868383;
+    text-decoration: none;
+    padding: 10px;
+    margin-left: 20px;
+}
+
+.navbar a:hover {
+    background-color: #f0ecec;
+}
+
+.nav-links a:first-child {
+    margin-left: 10;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+
+.footer-content {
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+.footer-content p {
+    margin-bottom: 10px;
+}
+
+    /*estilos carrusel*/
+
+  /* Estilos para mostrar una imagen a la vez 
+  .carrusel-slide:first-child {
+    display: block;
+  }*/
+  
+  .img-container{
+    background-image: url("/static/core/img/ServTecnico.jpg");
+    background-size: cover;
+    background-position: center ;
+    height: 500px;
+    width: 400px; 
+}
+
+.servicios-container {
+    display: flex;
+    align-items: center;
+  }
+  
+  .servicios-imagen {
+    flex: 0 0 50%;
+    padding-right: 20px;
+  }
+  
+  .servicios-imagen img {
+    max-width: 100%;
+  }
+  
+  .servicios-contenido {
+    flex: 1;
+  }
+  
+  .servicios-contenido h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .servicios-contenido p {
+    margin-bottom: 10px;
+  }
+  

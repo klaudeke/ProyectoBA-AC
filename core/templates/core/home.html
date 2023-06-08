@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Aire Acondicionado - Buenos Aires</title>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+	<link rel="stylesheet" href="/static/core/css/estilos.css">
+</head>
+<body>
+	<header>
+		<nav>
+				<div class="navbar">
+					<div class="logo">
+						<img src="/static/core/img/logoACBA.png" alt="Logo">
+					</div>
+					<div class="nav-links">
+						<a href="#">Home </a>
+						<a href="#productos">Productos </a>
+						<a href="#servicios">Servicios </a>
+						<a href="#contacto">Contacto </a>
+					</div>
+				</div>
+		</nav>
+		<h1>BUENOS AIRES</h1>
+		<p>Tu solución para el clima ideal</p>
+	</header>
+	
+	<main>
+		
+		<section id="carrusel">
+			<div class="container">
+			<div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+				<div class="carousel-inner">
+				  <div class="carousel-item active">
+					<img src="/static/core/img/familia.jpg" class="d-block w-100" alt="imagen 1">
+				  </div>
+				  <div class="carousel-item">
+					<img src="/static/core/img/aire-acondicionado-frio-calor-montermic.jpg" class="d-block w-100" alt="...">
+				  </div>
+				  <div class="carousel-item">
+					<img src="/static/core/img/Ac_portatil.jpg" class="d-block w-100" alt="...">
+				  </div>
+				</div>
+				<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+				  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+				  <span class="visually-hidden">Previous</span>
+				</button>
+				<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+				  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+				  <span class="visually-hidden">Next</span>
+				</button>
+			</div>
+			</div>
+		</section>	  
+
+		<section id="productos">
+			<div class="container">
+				<div class="servicios-container">
+					<div class="servicios-contenido">
+						<h2>Productos</h2>
+						<p>Aquí puedes encontrar una amplia selección de equipos de aire acondicionado para tu hogar o negocio. Ofrecemos desde unidades compactas hasta sistemas de aire centralizado para grandes espacios.</p>
+						<ul>
+							<li>Aire acondicionado portátil</li>
+							<li>Aire acondicionado de ventana</li>
+							<li>Aire acondicionado split</li>
+							<li>Aire acondicionado centralizado</li>
+						</ul>
+					</div>
+					<div class="servicios-imagen">
+						<img src="/static/core/img/EquipoAc.jpg" alt="Imagen de servicios">
+					</div>	
+				</div>	
+			</div>	
+		</section>
+		<section id="servicios">
+			<div class="container">
+				<div class="servicios-container">
+					<div class="servicios-imagen">
+					<img src="/static/core/img/ServTecnico.jpg" alt="Imagen de servicios">
+					</div>
+					<div class="servicios-contenido">
+						<h2>Servicios</h2>
+						<p>Además de la venta de equipos, ofrecemos una variedad de servicios para asegurarnos de que tu aire acondicionado funcione de manera óptima:</p>
+						<ul>
+							<li>Instalación profesional</li>
+							<li>Mantenimiento preventivo</li>
+							<li>Reparación de equipos</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</section>
+
+
+
+		<section id="contacto">
+			<div class="container">
+				<h2>Contacto</h2>
+				<p>¿Tienes alguna pregunta o necesitas asesoramiento sobre qué equipo de aire acondicionado se adapta mejor a tus necesidades? ¡No dudes en contactarnos!</p>
+				<form>
+					<label for="nombre">Nombre:</label>
+					<input type="text" id="nombre" name="nombre" required>
+					<label for="email">Email:</label>
+					<input type="email" id="email" name="email" required>
+					<label for="mensaje">Mensaje:</label>
+					<textarea id="mensaje" name="mensaje" rows="4" required></textarea>
+					<input type="submit" value="Enviar">
+				</form>
+			</div>	
+		</section>
+
+		
+	</main>
+	<footer>
+		<div class="footer-content">
+			<p>Derechos reservados &copy; Aire Acondicionado XYZ</p>
+		</div>
+	</footer>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+</body>
+</html>
