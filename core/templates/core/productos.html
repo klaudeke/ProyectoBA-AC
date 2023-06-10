@@ -1,31 +1,59 @@
 {% extends "core/base.html" %}
 {% block contenido %}
-<script>
-$(function(){
-        $("#form_buscar").on('submit',function(){
-            var formData = new FormData(this);
-            $.ajax({
-                url: "{% url 'post_buscar' %}",
-                type:"POST",
-                data: formData,
-                processData: false,
-                contentType:false,
-                success: function(respuesta){
-                    $("#nombre").val(respuesta.nombre);
-                    $("#stock_disponible").val(respuesta.stock);
-                    $("#precio").val(respuesta.precio);
-                    $("#codigo_oculto").val(respuesta.codigo);
-                    $("#autor").val(respuesta.autor);
-                    $("#vigencia").val(respuesta.vigencia);
-                }
+
+
+<!-- <script>
+    $(function(){
+            $("#form_buscar").on('submit',function(){
+                var formData = new FormData(this);
+                $.ajax({
+                    url: "{% url 'post_buscar' %}",
+                    type:"POST",
+                    data: formData,
+                    processData: false,
+                    contentType:false,
+                    success: function(respuesta){
+                        $("#nombre").val(respuesta.nombre);
+                        $("#stock_disponible").val(respuesta.stock);
+                        $("#precio").val(respuesta.precio);
+                        $("#codigo_oculto").val(respuesta.codigo);
+                        $("#autor").val(respuesta.autor);
+                        $("#vigencia").val(respuesta.vigencia);
+                    }
+                });
+                
+                return false;
+    
             });
-            
-            return false;
-
-        });
-
-
-        $("#form_actualizar").on('submit',function(){
+    
+    });        
+    
+</script> -->
+<script>
+    $(function(){
+            $("#form_buscar").on('submit',function(){
+                var formData = new FormData(this);
+                $.ajax({
+                    url: "{% url 'post_buscar' %}",
+                    type:"POST",
+                    data: formData,
+                    processData: false,
+                    contentType:false,
+                    success: function(respuesta){
+                        $("#id_producto").val(respuesta.id_producto);
+                        $("#nombre").val(respuesta.nombre);
+                        $("#tipo").val(respuesta.tipo);
+                        $("#descripcion").val(respuesta.descripcion);
+                        $("#precio").val(respuesta.precio);
+                        $("#stock").val(respuesta.stock);
+                        $("#estado").val(respuesta.estado);
+                    }
+                });
+                
+                return false;
+    
+            });
+            $("#form_actualizar").on('submit',function(){
             var formData = new FormData(this);
             $.ajax({
                 url: "{% url 'post_actualizar' %}",
@@ -45,49 +73,51 @@ $(function(){
             return false;
 
         });
-
-});        
-
+    
+    });        
+    
 </script>
-
-<h3>Consumo Cliente</h3>
-
-<h3>Formulario -Consulta</h3>
-<form method="post" id="form_buscar">
+    
+    <h3>Consumo Cliente</h3>
+    
+    <h3>Formulario -Consulta</h3>
+    <form method="post" id="form_buscar">
+        {% csrf_token %}
+        <div class="form-group">
+                <span>Ingrese código producto: </span>
+                <input type="text" name="codigo" id="codigo">
+                <button type="submit" class="btn btn-success">Consultar producto</button>
+        </div>
+    </form>
+    
+    <br>
+    <form method="post" id="form_actualizar">
     {% csrf_token %}
     <div class="form-group">
-            <span>Ingrese Código: </span>
-            <input type="text" name="codigo" id="codigo">
-            <button type="submit" class="btn btn-success">Obtener Libro</button>
+            <span>Nombre producto: </span>
+            <input type="text" name="nombre" id="nombre" readonly>
+            <span>Tipo producto: </span>
+            <input type="text" name="tipo" id="tipo" readonly>
+            <span>descripcion: </span>
+            <input type="text" name="descripcion" id="descripcion" readonly>
+            <span>precio: </span>
+            <input type="text" name="precio" id="precio" readonly>
+            <span>stock: </span>
+            <input type="text" name="stock" id="stock" readonly>
+            <input type="text" name="id_producto" id="id_producto" readonly>
+            <br>
+            <span>Ingrese cantidad a comprar: </span>
+            <input type="text" name="stock" id="stock">
+            <button type="submit"  class="btn btn-success">Actualizar Stock Libro</button>
     </div>
-</form>
-
-<br>
-<form method="post" id="form_actualizar">
-{% csrf_token %}
-<div class="form-group">
-        <span>Nombre del Libro: </span>
-        <input type="text" name="nombre" id="nombre" readonly>
-        <span>Stock disponible: </span>
-        <input type="text" name="stock_disponible" id="stock_disponible" readonly>
-        <span>Precio: </span>
-        <input type="text" name="precio" id="precio" readonly>
-        <span>Autor: </span>
-        <input type="text" name="autor" id="autor" readonly>
-        <span>Vigencia: </span>
-        <input type="text" name="vigencia" id="vigencia" readonly>
-        <input type="text" name="codigo_oculto" id="codigo_oculto" readonly>
-        <br>
-        <span>Ingrese cantidad a comprar: </span>
-        <input type="text" name="stock" id="stock">
-        <button type="submit"  class="btn btn-success">Actualizar Stock Libro</button>
-</div>
-</form>
-
+    </form>
+    
 
 
 
 <h3>{{mensaje}}</h3>
+
+
 
 <table id="tabla_datos" data-toggle="table" data-sort-name="stargazers_count"
 data-sort-order="desc"
@@ -96,23 +126,26 @@ data-height="460"
 data-unique-id="codigo_id"
 data-search="true">
 <thead class="thead-inverse">
-   <th data-field="codigo_id">Código Libro </th>     
-   <th data-field="nombre">Nombre Libro </th>  
-   <th data-field="precio">Precio Libro </th>  
-   <th data-field="stock">Stock Libro </th>  
-   <th data-field="autor">Autor Libro </th>  
-   <th data-field="vigencia">Vigencia Libro </th>   
+   <th data-field="codigo_id">Código </th>     
+   <th data-field="nombre">Nombre producto </th> 
+   <th data-field="tipo"> tipo producto </th>  
+   <th data-field="descripcion">descripcion </th> 
+   <th data-field="precio">Precio </th>  
+   <th data-field="stock">Stock  </th>  
+   <th data-field="estado">estado </th>  
+     
 </thead>
 <tbody>
 
-        {% for libro in lista %}
+        {% for p in lista %}
         <tr>
-            <td>{{libro.id_producto}}</td>
-            <td>{{libro.nombre}}</td>
-            <td>{{libro.precio}}</td>
-            <td>{{libro.stock}}</td>f
-            <td>{{libro.autor}}</td>
-            <td>{{libro.vigencia}}</td>
+            <td>{{p.id_producto}}</td>
+            <td>{{p.nombre}}</td>
+            <td>{{p.tipo}}</td>
+            <td>{{p.descripcion}}</td>
+            <td>{{p.precio}}</td>
+            <td>{{p.stock}}</td>
+            <td>{{p.estado}}</td>
         </tr>
         {% endfor %}
 </tbody>
