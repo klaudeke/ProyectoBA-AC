@@ -131,8 +131,8 @@
 
             <br>
             <div>    
-                <button type="submit"  class="btn btn-primary">Ingresar  </button>
-                <button type="submit"  class="btn btn-success">Actualizar</button>
+                <button type="submit"  class="btn btn-primary">Ingresar producto </button>
+                <button type="submit"  class="btn btn-success">Actualizar producto</button>
             </div>
         </form>
     </div>    
@@ -141,37 +141,38 @@
 <h3>{{mensaje}}</h3>
 
 
+<div class="container">
+    <table id="tabla_datos" data-toggle="table" data-sort-name="stargazers_count"
+    data-sort-order="desc"
+    data-pagination="true"
+    data-height="460"
+    data-unique-id="codigo_id"
+    data-search="true">
+    <thead class="thead-inverse">
+    <th data-field="codigo_id">Código </th>     
+    <th data-field="nombre">Nombre producto </th> 
+    <th data-field="tipo"> tipo producto </th>  
+    <th data-field="descripcion">descripcion </th> 
+    <th data-field="precio">Precio </th>  
+    <th data-field="stock">Stock  </th>  
+    <th data-field="estado">estado </th>  
+        
+    </thead>
+    <tbody>
 
-<table id="tabla_datos" data-toggle="table" data-sort-name="stargazers_count"
-data-sort-order="desc"
-data-pagination="true"
-data-height="460"
-data-unique-id="codigo_id"
-data-search="true">
-<thead class="thead-inverse">
-   <th data-field="codigo_id">Código </th>     
-   <th data-field="nombre">Nombre producto </th> 
-   <th data-field="tipo"> tipo producto </th>  
-   <th data-field="descripcion">descripcion </th> 
-   <th data-field="precio">Precio </th>  
-   <th data-field="stock">Stock  </th>  
-   <th data-field="estado">estado </th>  
-     
-</thead>
-<tbody>
+            {% for p in lista %}
+            <tr>
+                <td>{{p.id_producto}}</td>
+                <td>{{p.nombre}}</td>
+                <td>{{p.tipo}}</td>
+                <td>{{p.descripcion}}</td>
+                <td>{{p.precio}}</td>
+                <td>{{p.stock}}</td>
+                <td>{{p.estado}}</td>
+            </tr>
+            {% endfor %}
+    </tbody>
 
-        {% for p in lista %}
-        <tr>
-            <td>{{p.id_producto}}</td>
-            <td>{{p.nombre}}</td>
-            <td>{{p.tipo}}</td>
-            <td>{{p.descripcion}}</td>
-            <td>{{p.precio}}</td>
-            <td>{{p.stock}}</td>
-            <td>{{p.estado}}</td>
-        </tr>
-        {% endfor %}
-</tbody>
-
-</table>
+    </table>
+</div>    
 {% endblock contenido %}

@@ -19,6 +19,10 @@ body {
     padding: 20px;
 }
 
+.container-grilla {
+    max-width: 960px;
+  }
+
 header {
     background-color: #fff;
     padding: 5px;
