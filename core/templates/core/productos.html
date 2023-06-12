@@ -98,46 +98,44 @@
 
     <br>
 
-    <div class="container">
-        <form  class="row g-3" method="post" id="form_actualizar">
-        {% csrf_token %}
-        
-            <div class="col-auto">
-                    <span class="input-group-text">Nombre producto: </span>
-                    <input type="text" name="nombre" id="nombre" readonly>
-                    <span>Tipo producto: </span>
-                    <input type="text" name="tipo" id="tipo" readonly>
-            </div>
-            <div class="col-auto"> 
-                    <span>descripcion: </span>
-                    <input type="text" name="descripcion" id="descripcion" readonly>
-            </div>
-            <div class="col-auto">          
-                    <span>precio: </span>
-                    <input type="text" name="precio" id="precio" readonly>
-                    <span>stock: </span>
-                    <input type="text" name="stock" id="stock" readonly>
-            <div class="col-auto">        
-                    <span>Id Producto: </span>
-            </div>        
-            <div class="col-auto">        
-                    <input type="text" name="id_producto" id="id_producto" readonly>
-            </div>        
-            </div>     
-                <br>
-            <div>    
-                <div>    
-                    <button type="submit"  class="btn btn-primary">Ingresar  </button>
-                    <button type="submit"  class="btn btn-success">Actualizar</button>
-                </div>
-                <br>
-            </div>    
-
-        </form>
-    </div>    
-
     
 
+    <div class="container">
+        <form method="post" id="form_actualizar">
+        {% csrf_token %}
+            <div class="mb-3">
+                <span>Nombre producto: </span>
+                <input class="form-control" type="text" name="nombre" id="nombre" readonly>       
+            </div>        
+            <div class="mb-3">
+                <span>Tipo producto: </span>
+                <input class="form-control" type="text" name="tipo" id="tipo" readonly>
+            </div>
+            <div class="mb-3">
+                <span>Descripcion: </span>
+                <input class="form-control" type="text" name="descripcion" id="descripcion" readonly>    
+            </div>   
+            <div class="mb-3">
+                <span>Precio: </span>
+                <input class="form-control" type="text" name="precio" id="precio" readonly>    
+            </div>
+            <div class="mb-3">
+                <span>stock: </span>
+                <input class="form-control" type="text" name="stock" id="stock" readonly>
+            </div>        
+    
+            <div class="mb-3">
+                <span>Id Producto: </span>      
+                <input class="form-control" type="text" name="id_producto" id="id_producto" readonly>
+            </div>                     
+
+            <br>
+            <div>    
+                <button type="submit"  class="btn btn-primary">Ingresar  </button>
+                <button type="submit"  class="btn btn-success">Actualizar</button>
+            </div>
+        </form>
+    </div>    
 
 
 <h3>{{mensaje}}</h3>
