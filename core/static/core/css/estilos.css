@@ -19,9 +19,6 @@ body {
     padding: 20px;
 }
 
-.container-grilla {
-    max-width: 960px;
-  }
 
 header {
     background-color: #fff;
@@ -90,12 +87,12 @@ form input[type="submit"] {
     justify-content: space-between;
     align-items: center;
     padding: 10px;
-    width: 100%;
    
 }
 
 .logo img {
-    max-width: 70px; /* Ajusta el tamaño del logotipo según tus necesidades */
+    background-color: #333;
+    max-width: 100px; /* Ajusta el tamaño del logotipo según tus necesidades */
     /*margin-right: auto;*/
 }
 
