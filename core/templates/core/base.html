@@ -12,6 +12,26 @@
 
     </head>
     <body>
+        <header>
+            <nav>
+                    <div class="navbar">
+                        <div class="logo">
+                            <img src="/static/core/img/logoACBA.png" alt="Logo">
+                        </div>
+                        <div class="nav-links">
+                            <a href="{% url 'home' %}">Home </a>
+                            <a href="{% url 'home' %}#productos">Productos </a>
+                            <a href="{% url 'home' %}#servicios">Servicios </a>
+                            <a href="{% url 'home' %}#contacto">Contacto </a>
+                            <a href="{% url 'productos' %}">Bodega</a>
+                        </div>
+                    </div>
+            </nav>
+
+        
+            <h1 class="h1">BUENOS AIRES</h1>
+            <h3 class="lead"><strong>Tu solución para el clima ideal</strong></h3>
+        </header>
         {% block contenido %} 
         
         {% endblock contenido %}

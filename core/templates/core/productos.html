@@ -79,38 +79,62 @@
 </script>
     
     <h3>Consumo Cliente</h3>
-    
-    <h3>Formulario -Consulta</h3>
-    <form method="post" id="form_buscar">
-        {% csrf_token %}
-        <div class="form-group">
-                <span>Ingrese código producto: </span>
-                <input type="text" name="codigo" id="codigo">
-                <button type="submit" class="btn btn-success">Consultar producto</button>
-        </div>
-    </form>
-    
-    <br>
-    <form method="post" id="form_actualizar">
-    {% csrf_token %}
-    <div class="form-group">
-            <span>Nombre producto: </span>
-            <input type="text" name="nombre" id="nombre" readonly>
-            <span>Tipo producto: </span>
-            <input type="text" name="tipo" id="tipo" readonly>
-            <span>descripcion: </span>
-            <input type="text" name="descripcion" id="descripcion" readonly>
-            <span>precio: </span>
-            <input type="text" name="precio" id="precio" readonly>
-            <span>stock: </span>
-            <input type="text" name="stock" id="stock" readonly>
-            <input type="text" name="id_producto" id="id_producto" readonly>
-            <br>
-            <span>Ingrese cantidad a comprar: </span>
-            <input type="text" name="stock" id="stock">
-            <button type="submit"  class="btn btn-success">Actualizar Stock Libro</button>
+
+    <div class="container">
+        <h3>Formulario -Consulta</h3>
+        <form class="row g-3" method="post" id="form_buscar">
+            {% csrf_token %}  
+                <div class="col-auto">  
+                    <span class="input-group-text">Ingrese código producto: </span>
+                </div>    
+                <div class="col-auto">
+                    <input class="form-control" type="text" name="codigo" id="codigo">
+                </div>
+                <div class="col-auto">
+                    <button type="submit" class="btn btn-success">Consultar producto</button>
+                </div>        
+        </form>
     </div>
-    </form>
+
+    <br>
+
+    <div class="container">
+        <form  class="row g-3" method="post" id="form_actualizar">
+        {% csrf_token %}
+        
+            <div class="col-auto">
+                    <span class="input-group-text">Nombre producto: </span>
+                    <input type="text" name="nombre" id="nombre" readonly>
+                    <span>Tipo producto: </span>
+                    <input type="text" name="tipo" id="tipo" readonly>
+            </div>
+            <div class="col-auto"> 
+                    <span>descripcion: </span>
+                    <input type="text" name="descripcion" id="descripcion" readonly>
+            </div>
+            <div class="col-auto">          
+                    <span>precio: </span>
+                    <input type="text" name="precio" id="precio" readonly>
+                    <span>stock: </span>
+                    <input type="text" name="stock" id="stock" readonly>
+            <div class="col-auto">        
+                    <span>Id Producto: </span>
+            </div>        
+            <div class="col-auto">        
+                    <input type="text" name="id_producto" id="id_producto" readonly>
+            </div>        
+            </div>     
+                <br>
+            <div>    
+                <div>    
+                    <button type="submit"  class="btn btn-primary">Ingresar  </button>
+                    <button type="submit"  class="btn btn-success">Actualizar</button>
+                </div>
+            </div>    
+
+        </form>
+    </div>    
+
     
 
 
