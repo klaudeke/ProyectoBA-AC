@@ -78,10 +78,8 @@
     
 </script>
     
-    <h3>Consumo Cliente</h3>
-
     <div class="container">
-        <h3>Formulario -Consulta</h3>
+        <h3>Consulta Productos</h3>
         <form class="row g-3" method="post" id="form_buscar">
             {% csrf_token %}  
                 <div class="col-auto">  
@@ -101,6 +99,7 @@
     
 
     <div class="container">
+        <h3>Formulario Productos</h3>
         <form method="post" id="form_actualizar">
         {% csrf_token %}
             <div class="mb-3">
@@ -138,10 +137,11 @@
     </div>    
 
 
-<h3>{{mensaje}}</h3>
+
 
 
 <div class="container">
+    <h3>{{mensaje}}</h3>
     <table id="tabla_datos" data-toggle="table" data-sort-name="stargazers_count"
     data-sort-order="desc"
     data-pagination="true"
