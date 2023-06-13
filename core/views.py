@@ -24,19 +24,18 @@ def productos(request):
 
 
 ##por hacer
-def buscarLibro(request):
+def buscarProducto(request):
      controller = Controller()
      codigo = request.POST.get('codigo')
-     libro = controller.buscarUnLibro(codigo)
+     producto = controller.buscarUnProducto(codigo)
      return JsonResponse({
-          'codigo': libro.id_producto,
-          'nombre': libro.nombre,
-          'tipo': libro.tipo,
-          'descripcion':libro.autor,
-          'precio': libro.precio,
-          'stock': libro.stock,
-          'estado':libro.estado
-
+          'codigo': producto.ID_PRODUCTO,
+          'nombre': producto.NOMBRE,
+          'tipo': producto.TIPO,
+          'descripcion':producto.DESCRIPCION,
+          'precio': producto.PRECIO,
+          'stock': producto.STOCK,
+          'estado':producto.ESTADO
      })
 
 def actualizarLibro(request):

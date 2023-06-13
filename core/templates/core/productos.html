@@ -1,36 +1,8 @@
 {% extends "core/base.html" %}
 {% block contenido %}
 
-
-<!-- <script>
-    $(function(){
-            $("#form_buscar").on('submit',function(){
-                var formData = new FormData(this);
-                $.ajax({
-                    url: "{% url 'post_buscar' %}",
-                    type:"POST",
-                    data: formData,
-                    processData: false,
-                    contentType:false,
-                    success: function(respuesta){
-                        $("#nombre").val(respuesta.nombre);
-                        $("#stock_disponible").val(respuesta.stock);
-                        $("#precio").val(respuesta.precio);
-                        $("#codigo_oculto").val(respuesta.codigo);
-                        $("#autor").val(respuesta.autor);
-                        $("#vigencia").val(respuesta.vigencia);
-                    }
-                });
-                
-                return false;
-    
-            });
-    
-    });        
-    
-</script> -->
 <script>
-    $(function(){
+$(function(){
             $("#form_buscar").on('submit',function(){
                 var formData = new FormData(this);
                 $.ajax({
@@ -40,7 +12,7 @@
                     processData: false,
                     contentType:false,
                     success: function(respuesta){
-                        $("#id_producto").val(respuesta.id_producto);
+                        $("#idproducto").val(respuesta.codigo);
                         $("#nombre").val(respuesta.nombre);
                         $("#tipo").val(respuesta.tipo);
                         $("#descripcion").val(respuesta.descripcion);
@@ -53,6 +25,7 @@
                 return false;
     
             });
+
             $("#form_actualizar").on('submit',function(){
             var formData = new FormData(this);
             $.ajax({
@@ -74,9 +47,23 @@
 
         });
     
-    });        
+});        
     
 </script>
+<!--Boton mercado pago-->    
+<script src="https://sdk.mercadopago.com/js/v2"></script>
+<script>
+//clave publica del vendedor        
+const mp = new MercadoPago('TEST-99af2260-85d2-420f-a790-944f7577f18c');
+const bricksBuilder = mp.bricks();
+
+mp.bricks().create("wallet", "wallet_container", {
+   initialization: {
+       preferenceId: "{{preference_id}}",
+   },
+});
+</script>    
+{{preference_id}}
     
     <div class="container">
         <h3>Consulta Productos</h3>
@@ -125,23 +112,24 @@
     
             <div class="mb-3">
                 <span>Id Producto: </span>      
-                <input class="form-control" type="text" name="id_producto" id="id_producto" readonly>
+                <input class="form-control" type="text" name="idproducto" id="idproducto" readonly>
             </div>                     
 
             <br>
             <div>    
-                <button type="submit"  class="btn btn-primary">Ingresar producto </button>
                 <button type="submit"  class="btn btn-success">Actualizar producto</button>
             </div>
+
+            <div id="wallet_container"></div>
         </form>
     </div>    
 
-
+    
 
 
 
 <div class="container">
-    <h3>{{mensaje}}</h3>
+    <h3>Productos en Bodega ( {{mensaje}} )</h3>
     <table id="tabla_datos" data-toggle="table" data-sort-name="stargazers_count"
     data-sort-order="desc"
     data-pagination="true"
@@ -151,11 +139,11 @@
     <thead class="thead-inverse">
     <th data-field="codigo_id">Código </th>     
     <th data-field="nombre">Nombre producto </th> 
-    <th data-field="tipo"> tipo producto </th>  
-    <th data-field="descripcion">descripcion </th> 
+    <th data-field="tipo"> Tipo producto </th>  
+    <th data-field="descripcion">Descripcion </th> 
     <th data-field="precio">Precio </th>  
     <th data-field="stock">Stock  </th>  
-    <th data-field="estado">estado </th>  
+    <th data-field="estado">Estado </th>  
         
     </thead>
     <tbody>
