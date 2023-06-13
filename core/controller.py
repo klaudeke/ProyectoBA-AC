@@ -1,6 +1,5 @@
 from zeep import Client
 from .bodega import Pbodega
-# SDK de Mercado Pago
 import mercadopago  
 
 class Controller:
@@ -30,11 +29,6 @@ class Controller:
         producto = self.cliente.service.ConsultarUnProducto(cod)
         return producto
     
-
-    
-    def actualizarStock(self, cod, stock):
-        resultado = self.cliente.service.actualizarStockLibro(cod, stock)
-        return resultado
     
     def pagar(self):
         # Agrega credenciales

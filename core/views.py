@@ -10,13 +10,16 @@ def home(request):
 def productos(request):
      variable  = {
           'mensaje':'',
-          'lista':''
+          'lista':'',
+          'preference_id':''
      }
      controller = Controller()
      try:
           lista = controller.mostrarTodo()
           variable['lista']=lista
-          variable['mensaje']="Con datos"
+          preferencias = controller.pagar()
+          variable['preference_id']=preferencias["response"]["id"]
+          #variable['mensaje']="Con datos"
      except:
           variable['mensaje']="sin datos"
 

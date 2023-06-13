@@ -60,10 +60,13 @@ const bricksBuilder = mp.bricks();
 mp.bricks().create("wallet", "wallet_container", {
    initialization: {
        preferenceId: "{{preference_id}}",
+       redirectMode: "modal",
+
    },
 });
-</script>    
-{{preference_id}}
+</script>  
+
+
     
     <div class="container">
         <h3>Consulta Productos</h3>
@@ -116,11 +119,15 @@ mp.bricks().create("wallet", "wallet_container", {
             </div>                     
 
             <br>
-            <div>    
-                <button type="submit"  class="btn btn-success">Actualizar producto</button>
+            <!--
+                <div>    
+                <button type="submit"  class="btn btn-success">Actualizar Stock</button>
             </div>
-
+            -->
             <div id="wallet_container"></div>
+            
+
+            
         </form>
     </div>    
 
@@ -129,7 +136,7 @@ mp.bricks().create("wallet", "wallet_container", {
 
 
 <div class="container">
-    <h3>Productos en Bodega ( {{mensaje}} )</h3>
+    <h3>Productos en Bodega {{mensaje}} </h3>
     <table id="tabla_datos" data-toggle="table" data-sort-name="stargazers_count"
     data-sort-order="desc"
     data-pagination="true"
