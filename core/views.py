@@ -41,11 +41,12 @@ def buscarProducto(request):
           'estado':producto.ESTADO
      })
 
-def actualizarLibro(request):
+def actualizarStock(request):
      controller = Controller()
-     codigo = request.POST.get('id_producto')
-     stock  = request.POST.get('stock')
-     resultado = controller.actualizarStock(codigo,stock)
+     codigo = request.POST.get('idproducto')
+     cant  = request.POST.get('cantcomprar')
+     resultado = controller.actualizarStock(codigo,cant)
      return JsonResponse({
           'mensaje': resultado
      })
+

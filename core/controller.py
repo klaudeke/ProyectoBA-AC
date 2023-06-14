@@ -1,5 +1,6 @@
 from zeep import Client
 from .bodega import Pbodega
+from django.http import JsonResponse
 import mercadopago  
 
 class Controller:
@@ -30,6 +31,10 @@ class Controller:
         return producto
     
     
+    def actualizarStock(self,cod,stock):
+        resultado = self.cliente.service.actualizarStock(cod,stock)
+        return resultado
+    
     def pagar(self):
         # Agrega credenciales
         sdk = mercadopago.SDK("TEST-6893203693292695-052520-30a71d70f230d155da862fb8159a6138-1381511191")
@@ -39,8 +44,8 @@ class Controller:
             "items":[
                 {
                     "title":"Mi AC",
-                    "quantity":3,
-                    "unit_price": 3000
+                    "quantity": 1,
+                    "unit_price": 289990
                 }
             ]
         }

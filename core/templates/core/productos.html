@@ -26,7 +26,7 @@ $(function(){
     
             });
 
-            $("#form_actualizar").on('submit',function(){
+            $("#form_descontar").on('submit',function(){
             var formData = new FormData(this);
             $.ajax({
                 url: "{% url 'post_actualizar' %}",
@@ -36,11 +36,15 @@ $(function(){
                 contentType:false,
                 success: function(respuesta){
                     var mensaje = respuesta.mensaje;
-                    if(mensaje)
+                    if(mensaje){
+                        location.href ="http://127.0.0.1:8000/productos/";
                         alert("Datos actualizados");
+                    }
                     else        
                         alert("Error al actualizar");
                 }
+                
+
             });
             
             return false;
@@ -65,6 +69,16 @@ mp.bricks().create("wallet", "wallet_container", {
    },
 });
 </script>  
+<!--
+<script>
+    $(document).ready(function(){ 
+        $('#form_mercado').click(function(){ 
+            pagar(); 
+        }); 
+    }); 
+</script>
+-->
+
 
 
     
@@ -90,7 +104,7 @@ mp.bricks().create("wallet", "wallet_container", {
 
     <div class="container">
         <h3>Formulario Productos</h3>
-        <form method="post" id="form_actualizar">
+        <form method="post" id="form_mostrar">
         {% csrf_token %}
             <div class="mb-3">
                 <span>Nombre producto: </span>
@@ -113,27 +127,48 @@ mp.bricks().create("wallet", "wallet_container", {
                 <input class="form-control" type="text" name="stock" id="stock" readonly>
             </div>        
     
-            <div class="mb-3">
-                <span>Id Producto: </span>      
-                <input class="form-control" type="text" name="idproducto" id="idproducto" readonly>
-            </div>                     
+            
 
             <br>
-            <!--
                 <div>    
-                <button type="submit"  class="btn btn-success">Actualizar Stock</button>
+                
             </div>
-            -->
-            <div id="wallet_container"></div>
-            
-
-            
         </form>
     </div>    
 
-    
+    <div class="container">
+        <form class="row g-3" method="post" id="form_descontar">
+            {% csrf_token %}  
+                <div class="col-auto">
+                    <span>Id Producto: </span>      
+                </div>
+                <div class="col-auto">
+                    <input class="form-control" type="text" name="idproducto" id="idproducto" readonly>
+                </div>
 
+                <div class="col-auto">  
+                    <span class="input-group-text">cantidad de productos a comprar: </span>
+                </div>    
 
+                <div class="col-auto">
+                    <select class="form-select" name="cantcomprar" id="cantcomprar">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                    </select>
+                </div>
+                
+                <div class="col-auto">
+                    <button type="submit"  class="btn btn-success">Actualizar Stock</button>
+                </div>
+               
+        </form>
+    </div>
+
+<div class="container" >
+    <div id="wallet_container"></div>
+</div>
+   
 
 <div class="container">
     <h3>Productos en Bodega {{mensaje}} </h3>
@@ -149,8 +184,8 @@ mp.bricks().create("wallet", "wallet_container", {
     <th data-field="tipo"> Tipo producto </th>  
     <th data-field="descripcion">Descripcion </th> 
     <th data-field="precio">Precio </th>  
-    <th data-field="stock">Stock  </th>  
-    <th data-field="estado">Estado </th>  
+    <th data-field="stock"> Stock   .</th>  
+    <!--<th data-field="estado">Estado </th>-->  
         
     </thead>
     <tbody>
@@ -163,7 +198,7 @@ mp.bricks().create("wallet", "wallet_container", {
                 <td>{{p.descripcion}}</td>
                 <td>{{p.precio}}</td>
                 <td>{{p.stock}}</td>
-                <td>{{p.estado}}</td>
+                <!--<td>{{p.estado}}</td>-->
             </tr>
             {% endfor %}
     </tbody>
