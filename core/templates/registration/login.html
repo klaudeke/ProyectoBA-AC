@@ -1,0 +1,40 @@
+{% extends "core/base.html" %}
+{% block navbar %}
+{% endblock %}
+{% block contenido %}
+{% load crispy_forms_tags %}
+    
+    <div class="container">
+        <br>
+        <br>
+        <center><h2>Inicio de sesion</h2></center>
+    
+        <div class="row">
+            
+        <br>
+        <br>
+       
+        
+        <form method="post" style="margin: auto; width: 220px;">
+            <div class="form-group">
+            {% csrf_token%}
+            {{ form | crispy }}
+            
+            <input type="submit" value="Ingresar">            
+            </div>
+        
+         
+        
+            <br>
+            <div class="form-group">
+                <a href="/nuevo_usuario">Quiero registrarme 😊</a>
+            </div>
+            <div class="form-group">
+                <a href="/usuarios">¿Olvido su Contraseña?</a>
+            </div>
+        </form>    
+    </div>
+</div>
+</div>
+
+{% endblock contenido %}

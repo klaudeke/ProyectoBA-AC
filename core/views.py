@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.http import JsonResponse
 from .controller import *
 # Create your views here.
@@ -6,6 +6,9 @@ from .controller import *
 
 def home(request):
     return render(request,'core/home.html')
+
+def login(request):
+    return render(request,'core/login.html')
 
 def productos(request):
      variable  = {
