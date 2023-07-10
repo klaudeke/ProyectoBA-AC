@@ -1,0 +1,208 @@
+{% extends "core/base.html" %}
+{% block contenido %}
+
+<script>
+$(function(){
+            $("#form_buscar").on('submit',function(){
+                var formData = new FormData(this);
+                $.ajax({
+                    url: "{% url 'post_buscar_anwo' %}",
+                    type:"POST",
+                    data: formData,
+                    processData: false,
+                    contentType:false,
+                    success: function(respuesta){
+                        $("#idproducto").val(respuesta.codigo);
+                        $("#nombre").val(respuesta.nombre);
+                        $("#tipo").val(respuesta.tipo);
+                        $("#descripcion").val(respuesta.descripcion);
+                        $("#precio").val(respuesta.precio);
+                        $("#stock").val(respuesta.stock);
+                        $("#estado").val(respuesta.estado);
+                    }
+                });
+                
+                return false;
+    
+            });
+
+            $("#form_descontar").on('submit',function(){
+            var formData = new FormData(this);
+            $.ajax({
+                url: "{% url 'post_actualizar_anwo' %}",
+                type:"POST",
+                data: formData,
+                processData: false,
+                contentType:false,
+                success: function(respuesta){
+                    var mensaje = respuesta.mensaje;
+                    if(mensaje){
+                        location.href ="http://127.0.0.1:8000/bodegaANWO/";
+                        alert("Datos actualizados");
+                    }
+                    else        
+                        alert("Error al actualizar");
+                }
+                
+
+            });
+            
+            return false;
+
+        });
+    
+});        
+    
+</script>
+<!--Boton mercado pago-->    
+<script src="https://sdk.mercadopago.com/js/v2"></script>
+<script>
+//clave publica del vendedor        
+const mp = new MercadoPago('TEST-99af2260-85d2-420f-a790-944f7577f18c');
+const bricksBuilder = mp.bricks();
+
+mp.bricks().create("wallet", "wallet_container", {
+   initialization: {
+       preferenceId: "{{preference_id}}",
+       redirectMode: "modal",
+
+   },
+});
+</script>  
+<!--
+<script>
+    $(document).ready(function(){ 
+        $('#form_mercado').click(function(){ 
+            pagar(); 
+        }); 
+    }); 
+</script>
+-->
+
+
+
+    
+    <div class="container">
+        <h3>Consultar bodegaAWNO</h3>
+        <form class="row g-3" method="post" id="form_buscar">
+            {% csrf_token %}  
+                <div class="col-auto">  
+                    <span class="input-group-text">Ingrese código producto: </span>
+                </div>    
+                <div class="col-auto">
+                    <input class="form-control" type="text" name="codigo" id="codigo">
+                </div>
+                <div class="col-auto">
+                    <button type="submit" class="btn btn-success">Consultar producto</button>
+                </div>        
+        </form>
+    </div>
+
+    <br>
+
+    
+
+    <div class="container">
+        <h3>Formulario Productos</h3>
+        <form method="post" id="form_mostrar">
+        {% csrf_token %}
+            <div class="mb-3">
+                <span>Nombre producto: </span>
+                <input class="form-control" type="text" name="nombre" id="nombre" readonly>       
+            </div>        
+            <div class="mb-3">
+                <span>Tipo producto: </span>
+                <input class="form-control" type="text" name="tipo" id="tipo" readonly>
+            </div>
+            <div class="mb-3">
+                <span>Descripcion: </span>
+                <input class="form-control" type="text" name="descripcion" id="descripcion" readonly>    
+            </div>   
+            <div class="mb-3">
+                <span>Precio: </span>
+                <input class="form-control" type="text" name="precio" id="precio" readonly>    
+            </div>
+            <div class="mb-3">
+                <span>stock: </span>
+                <input class="form-control" type="text" name="stock" id="stock" readonly>
+            </div>        
+    
+            
+
+            <br>
+                <div>    
+                
+            </div>
+        </form>
+    </div>    
+
+    <div class="container">
+        <form class="row g-3" method="post" id="form_descontar">
+            {% csrf_token %}  
+                <div class="col-auto">
+                    <span>Id Producto: </span>      
+                </div>
+                <div class="col-auto">
+                    <input class="form-control" type="text" name="idproducto" id="idproducto" readonly>
+                </div>
+
+                <div class="col-auto">  
+                    <span class="input-group-text">cantidad de productos a comprar: </span>
+                </div>    
+
+                <div class="col-auto">
+                    <select class="form-select" name="cantcomprar" id="cantcomprar">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                    </select>
+                </div>
+                
+                <div class="col-auto">
+                    <button type="submit"  class="btn btn-success">Actualizar Stock</button>
+                </div>
+               
+        </form>
+    </div>
+
+<div class="container" >
+    <div id="wallet_container"></div>
+</div>
+   
+
+<div class="container">
+    <h3>Productos en BodegaANWO {{mensaje}} </h3>
+    <table id="tabla_datos" data-toggle="table" data-sort-name="stargazers_count"
+    data-sort-order="desc"
+    data-pagination="true"
+    data-height="460"
+    data-unique-id="codigo_id"
+    data-search="true">
+    <thead class="thead-inverse">
+    <th data-field="codigo_id">Código </th>     
+    <th data-field="nombre">Nombre producto </th> 
+    <th data-field="tipo"> Tipo producto </th>  
+    <th data-field="descripcion">Descripcion </th> 
+    <th data-field="precio">Precio </th>  
+    <th data-field="stock"> Stock   .</th>  
+    <!--<th data-field="estado">Estado </th>-->  
+        
+    </thead>
+    <tbody>
+
+            {% for p in listaanwo %}
+            <tr>
+                <td>{{p.id_producto}}</td>
+                <td>{{p.nombre}}</td>
+                <td>{{p.tipo}}</td>
+                <td>{{p.descripcion}}</td>
+                <td>{{p.precio}}</td>
+                <td>{{p.stock}}</td>
+                <!--<td>{{p.estado}}</td>-->
+            </tr>
+            {% endfor %}
+    </tbody>
+
+    </table>
+</div>    
+{% endblock contenido %}
